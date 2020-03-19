@@ -11,11 +11,11 @@ public class CreditAccount extends AbstractBankAccount{
     	this.creditLimit=100;
     } */
 	//overloaded constructor for CreditAccount
-	CreditAccount(String name, int num,int amt)
+	CreditAccount(String name, int num,int amt, AccountType AccT)
     {
             super(name,num,amt);
             this.creditLimit=calculateCreditLimit(amt);
-            setType(AccountType.CREDIT);
+            setType(AccT);
             
     }
 	//modifier to set the account creditlimit

@@ -43,8 +43,8 @@ public class testCreditAccount {
 		Account a3 = new Account("Ilya Mustafana",44559,1000, AccountType.SAVINGS);
 		// Instantiate 2 credit accounts using constructor with
 		// values which will call constructor from super
-		CreditAccount c1 = new CreditAccount("A.N Other", 88776, 500);
-		CreditAccount c2 = new CreditAccount("Another",66778,1000);
+		CreditAccount c1 = new CreditAccount("A.N Other", 88776, 500, AccountType.SAVINGS);
+		CreditAccount c2 = new CreditAccount("Another",66778,1000, AccountType.SAVINGS);
 		// Print accounts
 		// Print accounts
 		//a1.print();

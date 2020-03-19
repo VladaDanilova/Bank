@@ -9,8 +9,8 @@ public class TestCustomerAccounts {
 		bankAccount[1] = new Account("He Xai",22338,500, AccountType.SAVINGS);
 		bankAccount[2] = new Account("Ilya Mustafana",44559,1000, AccountType.SAVINGS);
 		// Instantiate 2 credit accounts using constructor with
-		bankAccount[3] = new CreditAccount("A.N Other", 88776, 500);
-		bankAccount[4] = new CreditAccount("Another",66778,1000);
+		bankAccount[3] = new CreditAccount("A.N Other", 88776, 500,AccountType.CREDIT);
+		bankAccount[4] = new CreditAccount("Another",66778,1000, AccountType.CREDIT);
 		
 		showAllCustomerAccounts(bankAccount);
 		showAllAccounts(bankAccount);

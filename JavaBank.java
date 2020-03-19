@@ -1,6 +1,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import javax.swing.*;
@@ -76,8 +77,8 @@ public class JavaBank extends JFrame {
  
     // two-dimensional array to store Account details
 
-    static AbstractBankAccount myAccounts[]  = new AbstractBankAccount[MaxAccounts]; ///                                                 HERE THE TASK!!!!
-    
+    //static AbstractBankAccount myAccounts[]  = new AbstractBankAccount[MaxAccounts]; ///                                                 HERE THE TASK!!!!
+    static ArrayList<AbstractBankAccount> myAccounts = new ArrayList<AbstractBankAccount>();
     static int noAccounts = 0; 
     
     
@@ -352,12 +353,14 @@ public class JavaBank extends JFrame {
    //createAccountJButtonActionPerformed method) to include an if statement that checks the account type.
         	if ((noAccounts <= 9) & (Name != "") & (Accountnum != 0))  {        		
         		if(actType.equals(AccountType.CREDIT)) { 
-        			myAccounts[noAccounts] = new CreditAccount(Name,Accountnum,Balance); 
+        		//	myAccounts[noAccounts] = new CreditAccount(Name,Accountnum,Balance); 
+        			myAccounts.add(new CreditAccount(Name,Accountnum,Balance,actType));
         			actType = AccountType.SAVINGS; 
         			AccountNames[noAccounts] = "USED"; 
-        			} else { myAccounts[noAccounts] = new Account(Name,Accountnum,Balance, actType); 
+        			} else { //myAccounts[noAccounts] = new Account(Name,Accountnum,Balance, actType); 
+        			myAccounts.add(new CreditAccount(Name,Accountnum,Balance,actType));
         			AccountNames[noAccounts] = "USED"; }//end if
-        			displayAccountDetails(myAccounts[noAccounts]); 
+        			displayAccountDetails(myAccounts.get(noAccounts)); 
         			noAccounts ++; 
         			System.out.println(noAccounts); 
         			} else { 
@@ -416,14 +419,14 @@ public class JavaBank extends JFrame {
         //                                                                                            TASK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
              
             for (int i=0; i<noAccounts; i++) {
-        	if ((myAccounts[i].getAccountNum() == Accountnum) && (Deposit>0)) {
-        		    myAccounts[i].setBalance(myAccounts[i].getBalance()+Deposit);
-        		    displayJTextArea.setText(myAccounts[i].toString());
+        	if ((myAccounts.get(i).getAccountNum() == Accountnum) && (Deposit>0)) {
+        		    myAccounts.get(i).setBalance(myAccounts.get(i).getBalance()+Deposit);
+        		    displayJTextArea.setText(myAccounts.get(i).toString());
         	}
         		
-        	if ((myAccounts[i].getAccountNum() == Accountnum) && (Withdraw>0)) {        		
-        			 myAccounts[i].setBalance(myAccounts[i].getBalance()-Withdraw);
-        			 displayJTextArea.setText(myAccounts[i].toString());
+        	if ((myAccounts.get(i).getAccountNum() == Accountnum) && (Withdraw>0)) {        		
+        			 myAccounts.get(i).setBalance(myAccounts.get(i).getBalance()-Withdraw);
+        			 displayJTextArea.setText(myAccounts.get(i).toString());
         	}
         	
         	        }
@@ -462,7 +465,7 @@ public class JavaBank extends JFrame {
     	}else {
     	for (int i=0; i<noAccounts; i++) { 
     		
-    			displayJTextArea.append(myAccounts[i].toString()+"\n");
+    			displayJTextArea.append(myAccounts.get(i).toString()+"\n");
          	    
     		
     		
